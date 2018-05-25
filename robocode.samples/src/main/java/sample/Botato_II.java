@@ -55,6 +55,7 @@ public class BotatoIII extends AdvancedRobot {
 		else{
 			return;
 		}
+		if (getGunHeat() == 0 && Math.abs(getGunTurnRemaining()) < 10)
 		setFire(300/e.getDistance());
 	}
 
@@ -62,6 +63,10 @@ public class BotatoIII extends AdvancedRobot {
 		if(Name.equals(e.getName())){
 			Name = null;
 		}
+	}
+	public void onHitWall(HitWallEvent e){
+		setBack(60);
+		setTurnRight(180);
 	}
 
 	public void onWin(WinEvent e) {
