@@ -61,7 +61,7 @@ public class BotatoII extends RateControlRobot {
 		setFire(300/e.getDistance());
 	}
 
-	public void onHitRobot(HitRobotEvent e) {
+	public void onRobotDeath(RobotDeathEvent event) {
 		if(Name.equals(e.getName())){
 			Name = null;
 		}
