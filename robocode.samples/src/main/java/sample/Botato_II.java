@@ -7,7 +7,6 @@
  */
 package Botato;
 import java.lang.Math;
-import static robocode.util.Utils.normalRelativeAngleDegrees;
 import robocode.*;
 import java.awt.*;
 
@@ -20,19 +19,19 @@ import java.awt.*;
  * @author Mathew A. Nelson (original)
  * @author Flemming N. Larsen (contributor)
  */
-public class BotatoII extends RateControlRobot {
+public class BotatoIII extends AdvancedRobot {
 	private String Name = null;
 	private int count = 0;
-	private double gunTurn = double.POSITIVE_INFINITY;
-	setAdjustGunForRobotTurn(true)
-	setGunRotationRate(pi/16)
+	private byte gunTurn = 1;
+	setAdjustGunForRobotTurn(true);
+	setAdjustRadarForRobotTurn(true);
 	public void run() {
 	setAllColours(Color.WHITE);
 		
 		while (true) {
 			count++;
-			setGunTurnRight(gunTurn);
-			scan();
+			setGunTurnRight(360 * gunTurn);
+			execute();
 		}
 	}
 
@@ -42,15 +41,13 @@ public class BotatoII extends RateControlRobot {
 			Name = e.getName();
 			gunTurn *= -1;
 		}
-		else if(Name.equals(e.getName()) && e.getDistance < 250){
+		else if(Name.equals(e.getName())) && e.getDistance < 250){
 			setTurnRight(e.getBearing() - 90);
-			//setVelocityRate(.5*(Math.abs(Math.sin(count))));
 			setAhead(45);
 			gunTurn *= -1;
 		}
 		else if(Name.equals(e.getName() && e.getDistance >= 250){
 			setTurnRight(e.getBearing();
-			//setVelocityRate(double.POSITIVE_INFINITY);
 			setAhead(e.getDistance() - 200);
 			gunTurn *= -1;
 		}
